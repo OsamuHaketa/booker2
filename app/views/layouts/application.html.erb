@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Booker2</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <header>
+    <body>
+      <% if user_signed_in? %>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      <% else %>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      <% end %>
+      <%= yield %>
+    </body>
+  </header>
+</html>
