@@ -7,20 +7,20 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <header>
     <body>
       <% if user_signed_in? %>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li><%= link_to "Home", user_path(current_user) %></li>
+        <li><%= link_to "Users", users_path %></li>
+        <li><%= link_to "Books", books_path %></li>
+        <li><%= button_to "logout", destroy_user_session_path, method: :delete %></li>
       <% else %>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "About", about_path %></li>
+        <li><%= link_to "sign up", new_user_registration_path %></li>
+        <li><%= link_to "login", new_user_session_path %></li>
       <% end %>
       <%= yield %>
     </body>
