@@ -2,6 +2,7 @@ class BooksController < ApplicationController
 
     def create
         @book = Book.new(book_params)
+        @new_book = Book.new
         @book.user_id = current_user.id
         @book.save
         redirect_to book_path(@book.id)
@@ -23,7 +24,7 @@ class BooksController < ApplicationController
 
     def index
         @books = Book.all
-        @book = Book.new
+        @new_book = Book.new
         @user = current_user
     end
 

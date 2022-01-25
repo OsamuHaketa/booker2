@@ -2,27 +2,52 @@
 <html>
   <head>
     <title>Booker2</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
-  <header>
     <body>
-      <% if user_signed_in? %>
-        <li><%= link_to "Home", user_path(current_user) %></li>
-        <li><%= link_to "Users", users_path %></li>
-        <li><%= link_to "Books", books_path %></li>
-        <li><%= button_to "logout", destroy_user_session_path, method: :delete %></li>
-      <% else %>
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "About", about_path %></li>
-        <li><%= link_to "sign up", new_user_registration_path %></li>
-        <li><%= link_to "login", new_user_session_path %></li>
-      <% end %>
+    <header>
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <%= link_to 'Bookers', root_path, class: "navbar-brand" %>
+          <div class="collapsenavbar-collapse">
+            <ul class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+                <li><%= link_to "Home", user_path(current_user), class:"fas fa-home nav-link text-light" %></li>
+                <li><%= link_to "Users", users_path, class:"fas fa-users nav-link text-light" %></li>
+                <li><%= link_to "Books", books_path, class:"nav-link text-light" %></li>
+                <li><%= button_to "logout", destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to "Home", root_path, class:"nav-link text-light"%></li>
+                <li><%= link_to "About", about_path, class:"nav-link text-light" %></li>
+                <li><%= link_to "sign up", new_user_registration_path, class:"nav-link text-light" %></li>
+                <li><%= link_to "login", new_user_session_path, class:"nav-link text-light"%></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+
+      <p id="notice"><%= notice %></p>
       <%= yield %>
-    </body>
-  </header>
+    </main>
+    <footer>
+      <div class="container mt-5">
+        	<div class="row">
+          	<div class="mx-auto">
+          		<p>CopyRight Infratop.inc</p>
+          	</div>
+          </div>
+        </div>
+    </footer>
+  </body>
 </html>
